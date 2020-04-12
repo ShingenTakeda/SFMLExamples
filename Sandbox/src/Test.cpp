@@ -1,6 +1,6 @@
 #include "Test.hpp"
 
-void Message()
+void Test::Message()
 {
-    std::printf("oi");
+    std::cout<<"Window closed"<<std::endl;
 }
