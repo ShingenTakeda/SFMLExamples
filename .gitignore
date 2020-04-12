@@ -1,0 +1,11 @@
+.vscode
+.codelite
+bin
+bin-int
+conan.lock
+conanbuildinfo.premake.lua
+conanbuildinfo.txt
+conaninfo.txt
+graph_info.json
+Makefile
+SFMLExamples.workspace
