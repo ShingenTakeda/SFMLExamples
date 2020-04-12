@@ -58,6 +58,40 @@ project "ExampleTwo"
     kind "ConsoleApp"
     language "C++"
     staticruntime "on"
+        
+    linkoptions { conan_exelinkflags }
+        
+    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+        
+    files
+    {
+        "%{prj.name}/src/**.hpp",
+        "%{prj.name}/src/**.cpp"
+    }
+        
+    includedirs {"%{prj.name}/src"}
+        
+    filter "configurations:Debug"
+        defines "TWO_DEBUG"
+        runtime "Debug"
+        symbols "on"
+        
+    filter "configurations:Release"
+        defines "TWO_RELEASE"
+        runtime "Release"
+        optimize "on"
+        
+    filter "configurations:Dist"
+        defines "TWO_DIST"
+        runtime "Release"
+        optimize "on"
+
+project "Sandbox"
+    location "Sandbox"
+    kind "ConsoleApp"
+    language "C++"
+    staticruntime "on"
     
     linkoptions { conan_exelinkflags }
     
@@ -73,16 +107,16 @@ project "ExampleTwo"
     includedirs {"%{prj.name}/src"}
     
     filter "configurations:Debug"
-        defines "TWO_DEBUG"
+        defines "S_DEBUG"
         runtime "Debug"
         symbols "on"
     
     filter "configurations:Release"
-        defines "TWO_RELEASE"
+        defines "S_RELEASE"
         runtime "Release"
         optimize "on"
     
     filter "configurations:Dist"
-        defines "TWO_DIST"
+        defines "S_DIST"
         runtime "Release"
         optimize "on"
